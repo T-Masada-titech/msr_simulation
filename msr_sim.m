@@ -13,7 +13,6 @@ end
 weight = magic(10);
 weight = weight(:, [1 3 5 2 6 8 9 7 4 10]);
 weight = weight([2 4 6 3 8 9 10 1 5 7], :);
-weight = weight / sum(weight(1, :));
 
 for i = 1:T
     state(:, i+1) = msr_update(state(:, i), weight, malN);

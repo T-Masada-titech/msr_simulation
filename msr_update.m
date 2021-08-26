@@ -29,6 +29,7 @@ function nextState = msr_update(state, weight, prunNum)
             neighborState(k) = state(neighborIdx(k));
             neighborWeight(k) = weight(i, neighborIdx(k));
         end
+        sumOfNeighborWeight = sum(neighborWeight);
         
         %sort the statees of neighbor agents
         [sortedNeighborState, sortedNeighborIdx] = sort(neighborState);
@@ -36,7 +37,7 @@ function nextState = msr_update(state, weight, prunNum)
         %calculate next state of agent i
         for j = 1:length(sortedNeighborState)
             if prunNum < j && j <= length(sortedNeighborState) - prunNum
-                tmpS = tmpS + neighborWeight(sortedNeighborIdx(j))*sortedNeighborState(j);
+                tmpS = tmpS + neighborWeight(sortedNeighborIdx(j))/sumOfNeighborWeight*sortedNeighborState(j);
             end
         end
         nextState(i) = tmpS;
