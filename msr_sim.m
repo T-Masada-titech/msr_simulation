@@ -1,6 +1,6 @@
 clear
 close
-T = 20;
+T = 10;
 N = 10;
 malN = 1;
 
